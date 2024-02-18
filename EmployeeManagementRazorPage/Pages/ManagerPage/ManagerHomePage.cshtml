@@ -1,0 +1,85 @@
+﻿@page
+@model EmployeeManagementRazorPage.Pages.ManagerPage.ManagerHomePageModel
+@{
+}
+<div style="border-radius: 10px; background-color: #EFF2F7; padding: 0 0 0 0;">
+    <div style="display: flex;">
+        <partial name="_LeftMenu" />
+        <!-- Main Section -->
+        <div style="flex: 1; padding: 20px 0 0 0;">
+            <button class="addButton">
+                <i class="fas fa-plus" style="vertical-align: middle; margin-right: 8px;"></i> Add New Employee
+            </button>
+            <div style="margin-top: 20px;">
+                <form method="get">
+                    <select id="cbSearch" name="cbSearch" class="customComboBox">
+                        <option value="Email" selected="@(Model.CbSearch == "Email")">By Email</option>
+                        <option value="Name" selected="@(Model.CbSearch == "Name")">By Name</option>
+                    </select>
+                    <input type="text" id="txtSearch" name="txtSearch" class="filterTextBox" style="margin-left: 15px;" value="@Model.TxtSearch">
+                    <button type="submit" class="addButton" style="margin-left: 15px;">
+                        Search
+                    </button>
+                </form>
+            </div>
+            <div style="margin-top: 20px;">                
+                <table class="dataGrid">
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Fullname</th>
+                            <th>Phone Number</th>
+                            <th>Hire Date</th>
+                            <th>Department</th>
+                            <th>Job Title</th>
+                            <th>Salary</th>
+                            <th>Operations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Employees)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Account.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Account.FullName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Account.PhoneNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HiredDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Job.JobTitle)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Job.Salary)
+                                </td>
+                                <td>
+                                    <div class="d-flex">
+                                        <div class="me-4">
+                                            <a asp-page="./UpdateInformationEmployee" asp-route-id="@item.Username" title="Update Information">
+                                                <i class="fas fa-edit" style="color:#212529;"></i>
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a asp-page="./JobHistory" asp-route-id="@item.Username" title="Job History">
+                                                <i class="fas fa-history" style="color:#212529;"></i>
+                                            </a>
+                                        </div>
+                                    </div>                                                                  
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>                                
+            </div>
+        </div>
+    </div>
+</div>    

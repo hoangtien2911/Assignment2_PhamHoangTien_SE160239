@@ -7,7 +7,37 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="wwwroot\Images\Logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\Account\AccessDenied.cshtml" />
+    <None Include="wwwroot\Images\AddEmployee.png" />
+    <None Include="wwwroot\Images\Background.png" />
+    <None Include="wwwroot\Images\ChangeInfo.png" />
+    <None Include="wwwroot\Images\People.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\EmployeeManagementService\EmployeeManagementService.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="wwwroot\Images\AddEmployee.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="wwwroot\Images\Background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="wwwroot\Images\ChangeInfo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="wwwroot\Images\Logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="wwwroot\Images\People.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

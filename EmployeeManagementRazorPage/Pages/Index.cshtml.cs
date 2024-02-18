@@ -1,4 +1,5 @@
-﻿using EmployeeManagementService;
+﻿using EmployeeManagementBO.Models;
+using EmployeeManagementService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -20,9 +21,19 @@ namespace EmployeeManagementRazorPage.Pages
             _accountService = accountService;
         }
 
-        public void OnGet()
+        public async Task<IActionResult> OnGetAsync()
         {
-
+            var role = HttpContext.Session.GetString("Role");
+            switch (role)
+            {
+                case "Manager":
+                    return RedirectToPage("ManagerPage/ManagerHomePage");
+                case "Admin":
+                    return RedirectToPage("AdminPage/AdminHomePage");
+                case "User":
+                    return RedirectToPage("UserPage/UserHomePage");
+            }
+            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -30,9 +41,22 @@ namespace EmployeeManagementRazorPage.Pages
             var account = _accountService.FindAccountByUsernameAndPassword(Username, Password);            
             if (account != null)
             {
-                HttpContext.Session.SetString("Role", "User");
-                HttpContext.Session.SetString("Username", account.Username);
-                return RedirectToPage("/Error");
+                string role = account.Role;
+                switch (role)
+                {                      
+                    case "Manager":
+                        HttpContext.Session.SetString("Role", "Manager");
+                        HttpContext.Session.SetString("Username", account.Username);
+                        return RedirectToPage("ManagerPage/ManagerHomePage");
+                    case "Admin":
+                        HttpContext.Session.SetString("Role", "Admin");
+                        HttpContext.Session.SetString("Username", account.Username);
+                        return RedirectToPage("AdminPage/AdminHomePage");
+                    default:
+                        HttpContext.Session.SetString("Role", "User");
+                        HttpContext.Session.SetString("Username", account.Username);
+                        return RedirectToPage("UserPage/UserHomePage");
+                }
             }
             else
             {
