@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagementRazorPage", "EmployeeManagementRazorPage\EmployeeManagementRazorPage.csproj", "{89379798-F2BB-44EE-9D30-2458804E33B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagementRazorPage", "EmployeeManagementRazorPage\EmployeeManagementRazorPage.csproj", "{89379798-F2BB-44EE-9D30-2458804E33B3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagementBO", "EmployeeManagementBO\EmployeeManagementBO.csproj", "{63FA4F83-4F33-4C6E-BE11-381BAE8C5748}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagementDAO", "EmployeeManagementDAO\EmployeeManagementDAO.csproj", "{3F391382-1ABB-4320-BE2A-605AB4242C77}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagementRepository", "EmployeeManagementRepository\EmployeeManagementRepository.csproj", "{230D0D18-B230-4839-B904-A7AF28517551}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagementService", "EmployeeManagementService\EmployeeManagementService.csproj", "{6D97812E-528B-48E5-8357-564C3DA4F786}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{89379798-F2BB-44EE-9D30-2458804E33B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89379798-F2BB-44EE-9D30-2458804E33B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89379798-F2BB-44EE-9D30-2458804E33B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63FA4F83-4F33-4C6E-BE11-381BAE8C5748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63FA4F83-4F33-4C6E-BE11-381BAE8C5748}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63FA4F83-4F33-4C6E-BE11-381BAE8C5748}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63FA4F83-4F33-4C6E-BE11-381BAE8C5748}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F391382-1ABB-4320-BE2A-605AB4242C77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F391382-1ABB-4320-BE2A-605AB4242C77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F391382-1ABB-4320-BE2A-605AB4242C77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F391382-1ABB-4320-BE2A-605AB4242C77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{230D0D18-B230-4839-B904-A7AF28517551}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{230D0D18-B230-4839-B904-A7AF28517551}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{230D0D18-B230-4839-B904-A7AF28517551}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{230D0D18-B230-4839-B904-A7AF28517551}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D97812E-528B-48E5-8357-564C3DA4F786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D97812E-528B-48E5-8357-564C3DA4F786}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D97812E-528B-48E5-8357-564C3DA4F786}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D97812E-528B-48E5-8357-564C3DA4F786}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
