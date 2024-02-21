@@ -1,0 +1,35 @@
+﻿@page
+@model EmployeeManagementRazorPage.Pages.ManagerPage.JobPageModel
+@{
+}
+<div style="border-radius: 10px; background-color: #EFF2F7; padding: 0 0 0 0;">
+    <div style="display: flex; min-height: calc(100vh - 117px);">
+        <partial name="_LeftMenu" />
+        <!-- Main Section -->
+        <div style="flex: 1; padding: 20px 0 0 0;">
+            <div style="margin-top: 20px;">
+                <table class="dataGrid">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Job Title</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Jobs.Count; i++)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.Raw(i + 1)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => Model.Jobs[i].JobTitle)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>    

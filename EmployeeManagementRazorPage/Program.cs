@@ -1,5 +1,6 @@
 using EmployeeManagementService;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IAccountService, AccountService>();
@@ -11,7 +12,10 @@ builder.Services.AddScoped<IJobHistoryService, JobHistoryService>();
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+{
+    options.AccessDeniedPath = "/AccountPermission/AccessDenied"; // Set the access denied page path
+});
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(30);

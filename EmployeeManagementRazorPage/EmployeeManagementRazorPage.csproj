@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Pages\Account\AccessDenied.cshtml" />
+    <None Include="Pages\AccountPermission\AccessDenied.cshtml" />
     <None Include="wwwroot\Images\AddEmployee.png" />
     <None Include="wwwroot\Images\Background.png" />
     <None Include="wwwroot\Images\ChangeInfo.png" />

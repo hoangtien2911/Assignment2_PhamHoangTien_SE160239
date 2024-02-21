@@ -29,15 +29,16 @@
             </div>
         </nav>
     </header>
-    <div class="container-fluid" style="padding: 0; height: calc(100vh - 117px); width: 100vw;">
-        @RenderBody()        
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container-fluid">
-            &copy; 2024 - EmployeeManagement - 
+    <div class="wrapper">
+        <div class="container-fluid" style="padding: 0;">
+            <main role="main">
+                @RenderBody()
+            </main>
         </div>
-    </footer>
+        <footer class="border-top footer text-muted mt-auto">
+                &copy; 2024 - EmployeeManagement -            
+        </footer>
+    </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
