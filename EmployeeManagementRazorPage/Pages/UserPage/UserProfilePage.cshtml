@@ -1,0 +1,63 @@
+﻿@page
+@model EmployeeManagementRazorPage.Pages.UserPage.UserProfilePageModel
+@{
+}
+<div style="border-radius: 10px; background-color: #EFF2F7; padding: 0 0 0 0;">
+    <div style="display: flex; min-height: calc(100vh - 117px);">
+        <partial name="_LeftMenu" />
+        <!-- Main Section -->
+        <div style="flex: 1; padding: 20px 0 0 0;">
+            <div style="margin-top: 20px;">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Username" />
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" type="email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                        <span class="text-danger">@ViewData["ErrorMessageEmail"]</span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FullName" class="control-label"></label>
+                        <input asp-for="FullName" class="form-control" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                        <span class="text-danger">@ViewData["ErrorMessageFullname"]</span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PhoneNumber" class="control-label"></label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        <span class="text-danger">@ViewData["ErrorMessagePhoneNumber"]</span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Street" class="control-label"></label>
+                        <input asp-for="Street" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Ward" class="control-label"></label>
+                        <input asp-for="Ward" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="City" class="control-label"></label>
+                        <input asp-for="City" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Province" class="control-label"></label>
+                        <input asp-for="Province" class="form-control" />
+                    </div>
+
+
+                    <div class="form-group mt-3 mb-3">
+                        <input type="submit" value="Save" class="addButton" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

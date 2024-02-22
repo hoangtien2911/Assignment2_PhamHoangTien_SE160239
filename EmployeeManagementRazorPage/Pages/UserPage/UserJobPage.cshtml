@@ -1,0 +1,49 @@
+﻿@page
+@model EmployeeManagementRazorPage.Pages.UserPage.UserJobPageModel
+@{
+}
+<div style="border-radius: 10px; background-color: #EFF2F7; padding: 0 0 0 0;">
+    <div style="display: flex; min-height: calc(100vh - 117px);">
+        <partial name="_LeftMenu" />
+        <!-- Main Section -->
+        <div style="flex: 1; padding: 20px 0 0 0;">
+            <div style="margin-top: 20px;">
+                <table class="dataGrid">
+                    <thead>
+                        <tr>
+                            <th>Hired date</th>                            
+                            <th>Department</th>
+                            <th>Job Title</th>
+                            <th>Salary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                @{
+                                    string hiredDate = Model.Employee.HiredDate.ToString("dd-MM-yyyy");
+                                }
+                                @hiredDate
+                            </td>
+                            <td>
+                                @Model.Employee.Department.DepartmentName
+                            </td>
+                            <td>
+                                @Model.Employee.Job.JobTitle
+                            </td>
+                            <td>
+                                @Model.Employee.Job.Salary
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,37 @@
+﻿<div style="width: 200px; background-color: #679F7B; border-radius: 0 50px 0 0; padding: 20px; margin-right: 20px; overflow-y: auto;">
+    <div style="width: 80px; height: 80px; background-color: gray; border-radius: 100px; margin-left: 20px;">
+        <img src="../Images/Logo.png" style="width: 100%; height: 100%; object-fit: cover;" />
+    </div>
+    <div style="text-align: center; margin-top: 10px;">
+        <span style="color: white; font-size: 18px; font-weight: bold;">Employee</span><br />
+        <span style="color: white; font-size: 20px; font-weight: bold;">Management</span>
+    </div>
+    <hr style="background-color: #447B58; margin: 25px 0;">
+    <div style="text-align: center;">
+        <form method="get">
+            <button id="btnMyProfile" asp-page="/UserPage/UserProfilePage" class="menuButton @IsButtonActive("/UserPage/UserProfilePage")">
+                <i class="fas fa-user" style="margin-right: 5px;"></i> My profile
+            </button>
+            <button id="btnJob" asp-page="/UserPage/UserJobPage" class="menuButton @IsButtonActive("/UserPage/UserJobPage")">
+                <i class="fas fa-briefcase" style="margin-right: 5px;"></i>My Job
+            </button>
+            <button id="btnDepartment" asp-page="/UserPage/UserJobHistoryPage" class="menuButton @IsButtonActive("/UserPage/UserJobHistoryPage")">
+                <i class="fas fa-history" style="margin-right: 5px;"></i> Job History
+            </button>            
+            <button asp-page="/Logout" class="menuButton  @IsButtonActive("/Logout")" style="margin-top: auto;">
+                <i class="fas fa-sign-out-alt" style="margin-right: 5px;"></i> Logout
+            </button>
+        </form>
+    </div>
+</div>
+
+@functions {
+    public string IsButtonActive(string page)
+    {
+        if (ViewContext.RouteData.Values["Page"]?.ToString() == page)
+        {
+            return "active";
+        }
+        return "";
+    }
+}

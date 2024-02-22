@@ -31,7 +31,7 @@ namespace EmployeeManagementRazorPage.Pages
                 case "Admin":
                     return RedirectToPage("AdminPage/AdminHomePage");
                 case "User":
-                    return RedirectToPage("UserPage/UserHomePage");
+                    return RedirectToPage("UserPage/UserProfilePage");
             }
             return Page();
         }
@@ -55,7 +55,7 @@ namespace EmployeeManagementRazorPage.Pages
                     default:
                         HttpContext.Session.SetString("Role", "User");
                         HttpContext.Session.SetString("Username", account.Username);
-                        return RedirectToPage("UserPage/UserHomePage");
+                        return RedirectToPage("UserPage/UserProfilePage");
                 }
             }
             else
