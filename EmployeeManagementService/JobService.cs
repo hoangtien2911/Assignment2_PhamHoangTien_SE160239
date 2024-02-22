@@ -54,4 +54,14 @@ public class JobService : IJobService
     {
         return jobRepo.Delete(job);
     }
+
+    /// <summary>
+    /// Check existing job by job id in the database.
+    /// </summary>
+    /// <param name="jobId">The job id to be checked.</param>
+    /// <returns>True if the job id existed, otherwise false.</returns>
+    public bool IsExistingJob(int jobId)
+    {
+        return jobRepo.GetAll().Any(j => j.JobId.Equals(jobId));
+    }
 }

@@ -9,14 +9,17 @@ namespace EmployeeManagementRazorPage.Pages.ManagerPage
     {
         private readonly IDepartmentService _departmentService;
 
+        [BindProperty]
+        public IList<Department> Departments { get; set; } = default!;
+
         public DepartmentPageModel(IDepartmentService departmentService)
         {
             _departmentService = departmentService;
         }
-        public IList<Department> Departments { get; set; } = default!;
+        
         public IActionResult OnGet()
         {
-            //if (HttpContext.Session.GetString("Role") != "Manager") return Forbid();
+            if (HttpContext.Session.GetString("Role") != "Manager") return Forbid();
             Departments = _departmentService.GetAll().ToList();
             return Page();
         }

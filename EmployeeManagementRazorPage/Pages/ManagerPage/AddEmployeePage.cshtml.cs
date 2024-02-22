@@ -18,6 +18,8 @@ namespace EmployeeManagementRazorPage.Pages.ManagerPage
         [BindProperty]      
         public Employee Employee { get; set; }
 
+        public bool IsNoAccount { get; set; } = false;
+
         public AddEmployeePageModel(IAccountService accountService, IJobService jobService, IJobHistoryService jobHistoryService, IDepartmentService departmentService, IEmployeeService employeeService) { 
             _accountService = accountService;
             _jobService = jobService;
@@ -28,7 +30,12 @@ namespace EmployeeManagementRazorPage.Pages.ManagerPage
 
         public async Task<IActionResult> OnGetAsync()
         {
-            //if (HttpContext.Session.GetString("Role") != "Manager") return Forbid();
+            if (HttpContext.Session.GetString("Role") != "Manager") return Forbid();
+            var accounts = _accountService.FindAccountsWithNullEmployee().ToList();
+            if (accounts.Count == 0)
+            {
+                IsNoAccount = true;
+            }
             ViewData["Username"] = new SelectList(_accountService.FindAccountsWithNullEmployee(), "Username", "Email");
             ViewData["DepartmentId"] = new SelectList(_departmentService.GetAll(), "DepartmentId", "DepartmentName");
             ViewData["JobId"] = new SelectList(_jobService.GetAll(), "JobId", "JobTitle");
@@ -38,7 +45,7 @@ namespace EmployeeManagementRazorPage.Pages.ManagerPage
 
         public async Task<IActionResult> OnPostAsync()
         {
-            //if (HttpContext.Session.GetString("Role") != "Manager") return Forbid();
+            if (HttpContext.Session.GetString("Role") != "Manager") return Forbid();
             if (Employee != null)
             {
                 Employee newEmployee = new Employee

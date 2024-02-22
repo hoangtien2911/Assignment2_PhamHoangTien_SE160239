@@ -55,4 +55,14 @@ public class DepartmentService : IDepartmentService
     {
         return departmentRepo.Delete(department);
     }
+
+    /// <summary>
+    /// Check existing department by department id in the database.
+    /// </summary>
+    /// <param name="departmentId">The department id to be checked.</param>
+    /// <returns>True if the department id existed, otherwise false.</returns>
+    public bool IsExistingDepartment(int departmentId)
+    {
+        return departmentRepo.GetAll().Any(d => d.DepartmentId.Equals(departmentId));
+    }
 }

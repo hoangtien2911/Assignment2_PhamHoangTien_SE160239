@@ -8,32 +8,39 @@
         <!-- Main Section -->
         <div style="flex: 1; padding: 20px 0 0 0;">
             <div style="margin-top: 20px;">
-                <form method="post">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group">
-                        <label asp-for="Employee.Username" class="control-label"></label>
-                        <select asp-for="Employee.Username" class="form-control w-50" asp-items="ViewBag.Username"></select>
-                        <span asp-validation-for="Employee.Username" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Employee.DepartmentId" class="control-label"></label>
-                        <select asp-for="Employee.DepartmentId" class="form-control w-50" asp-items="ViewBag.DepartmentId"></select>
-                        <span asp-validation-for="Employee.DepartmentId" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Employee.JobId" class="control-label"></label>
-                        <select asp-for="Employee.JobId" class="form-control w-50" asp-items="ViewBag.JobId"></select>
-                        <span asp-validation-for="Employee.JobId" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Employee.HiredDate" class="control-label"></label>
-                        <input asp-for="Employee.HiredDate" class="form-control w-50" type="date" />
-                        <span asp-validation-for="Employee.HiredDate" class="text-danger"></span>
-                    </div>
-                    <div class="form-group mt-3">
-                        <input type="submit" value="Add" class="addButton" />
-                    </div>
-                </form>
+                @if (Model.IsNoAccount)
+                {
+                    <span class="text-danger">No accounts available for adding an employee.</span>
+                }
+                else
+                {
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Employee.Username" class="control-label"></label>
+                            <select asp-for="Employee.Username" class="form-control w-50" asp-items="ViewBag.Username"></select>
+                            <span asp-validation-for="Employee.Username" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Employee.DepartmentId" class="control-label"></label>
+                            <select asp-for="Employee.DepartmentId" class="form-control w-50" asp-items="ViewBag.DepartmentId"></select>
+                            <span asp-validation-for="Employee.DepartmentId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Employee.JobId" class="control-label"></label>
+                            <select asp-for="Employee.JobId" class="form-control w-50" asp-items="ViewBag.JobId"></select>
+                            <span asp-validation-for="Employee.JobId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Employee.HiredDate" class="control-label"></label>
+                            <input asp-for="Employee.HiredDate" class="form-control w-50" type="date" />
+                            <span asp-validation-for="Employee.HiredDate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mt-3">
+                            <input type="submit" value="Add" class="addButton" />
+                        </div>
+                    </form>
+                }
             </div>
         </div>
     </div>

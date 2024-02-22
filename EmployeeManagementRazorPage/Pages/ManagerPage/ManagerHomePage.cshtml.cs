@@ -14,6 +14,8 @@ namespace EmployeeManagementRazorPage.Pages.ManagerPage
 
         [BindProperty]
         public string TxtSearch { get; set; } = default!;
+
+        [BindProperty]
         public IList<Employee> Employees { get; set; } = default!;
 
         public ManagerHomePageModel(IEmployeeService employeeService)
@@ -23,7 +25,7 @@ namespace EmployeeManagementRazorPage.Pages.ManagerPage
 
         public IActionResult OnGet(string cbSearch, string txtSearch)
         {
-            //if (HttpContext.Session.GetString("Role") != "Manager") return Forbid();
+            if (HttpContext.Session.GetString("Role") != "Manager") return Forbid();
             if (!string.IsNullOrEmpty(txtSearch))
             {
                 CbSearch = cbSearch;

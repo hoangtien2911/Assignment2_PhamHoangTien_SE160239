@@ -56,6 +56,15 @@ public class EmployeeService : IEmployeeService
     }
 
     /// <summary>
+    /// Retrieves employee by username include account address department job and history from the database.
+    /// </summary>
+    /// <returns>An employee.</returns>
+    public Employee GetEmployeeByUsernameIncludeAccountAddressDepartmentJobAndHistory(string username)
+    {
+        return employeeRepo.GetAllInclude().Include(e => e.Account).Include(e => e.Account.Address).Include(e => e.Department).Include(e => e.Job).Include(e => e.JobHistories).First(e => e.Username.Equals(username));
+    }
+
+    /// <summary>
     /// Retrieves all employee by email include account department job from the database.
     /// </summary>
     /// <param name="email">The email to search for in employee records.</param>

@@ -37,8 +37,8 @@ namespace EmployeeManagementRazorPage.Pages.ManagerPage
 
         public async Task<IActionResult> OnGetAsync()
         {
-            //if (HttpContext.Session.GetString("Role") != "Manager") return Forbid();
-            string? username = "Manager";
+            if (HttpContext.Session.GetString("Role") != "Manager") return Forbid();
+            string? username = HttpContext.Session.GetString("Username"); 
             if (username == null)
             {
                 return NotFound();
@@ -69,6 +69,7 @@ namespace EmployeeManagementRazorPage.Pages.ManagerPage
 
         public async Task<IActionResult> OnPostAsync()
         {
+            if (HttpContext.Session.GetString("Role") != "Manager") return Forbid();
             var username = HttpContext.Session.GetString("Username");
             if (username == null || !username.Equals(Username)) return Forbid();
             if (!ModelState.IsValid)

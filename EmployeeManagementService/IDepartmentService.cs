@@ -34,4 +34,11 @@ public interface IDepartmentService
     /// <param name="department">The department object to be deleted.</param>
     /// <returns>True if the department is successfully deleted, otherwise false.</returns>
     bool Delete(Department department);
+
+    /// <summary>
+    /// Check existing department by department id in the database.
+    /// </summary>
+    /// <param name="departmentId">The department id to be checked.</param>
+    /// <returns>True if the department id existed, otherwise false.</returns>
+    bool IsExistingDepartment(int departmentId);
 }

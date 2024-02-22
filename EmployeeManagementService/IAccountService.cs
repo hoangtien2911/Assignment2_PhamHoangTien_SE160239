@@ -77,7 +77,7 @@ public interface IAccountService
     bool Update(Account account);
 
     /// <summary>
-    /// Check existing account email by email in the database.
+    /// Check existing account by email in the database.
     /// </summary>
     /// <param name="email">The email to be checked.</param>
     /// <returns>True if the email existed, otherwise false.</returns>

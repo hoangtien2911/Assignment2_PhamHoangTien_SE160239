@@ -34,4 +34,11 @@ public interface IJobService
     /// <param name="job">The job object to be deleted.</param>
     /// <returns>True if the job is successfully deleted, otherwise false.</returns>
     bool Delete(Job job);
+
+    /// <summary>
+    /// Check existing job by job id in the database.
+    /// </summary>
+    /// <param name="jobId">The job id to be checked.</param>
+    /// <returns>True if the job id existed, otherwise false.</returns>
+    bool IsExistingJob(int jobId);
 }

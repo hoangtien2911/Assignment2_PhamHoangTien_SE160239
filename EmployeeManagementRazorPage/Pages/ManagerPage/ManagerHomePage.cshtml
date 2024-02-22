@@ -69,12 +69,12 @@
                                 <td>
                                     <div class="d-flex">
                                         <div class="me-4">
-                                            <a asp-page="./UpdateInformationEmployee" asp-route-id="@item.Username" title="Update Information">
+                                            <a asp-page="./UpdateInformationEmployee" asp-route-employeeUsername="@item.Username" title="Update Information">
                                                 <i class="fas fa-edit" style="color:#212529;"></i>
                                             </a>
                                         </div>
                                         <div>
-                                            <a asp-page="./JobHistory" asp-route-id="@item.Username" title="Job History">
+                                            <a asp-page="./JobHistoryEmployee" asp-route-employeeId="@item.EmployeeId" title="Job History">
                                                 <i class="fas fa-history" style="color:#212529;"></i>
                                             </a>
                                         </div>
