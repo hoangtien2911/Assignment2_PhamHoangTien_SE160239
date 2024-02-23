@@ -36,6 +36,16 @@ public class JobService : IJobService
     }
 
     /// <summary>
+    /// Retrieves job by id from the database.
+    /// </summary>
+    /// /// <param name="jobId">The job id.</param>
+    /// <returns>A job.</returns>
+    public Job GetJobById(int jobId)
+    {
+        return jobRepo.GetAll().First(j => j.JobId.Equals(jobId));
+    }
+
+    /// <summary>
     /// Updates an existing job in the database.
     /// </summary>
     /// <param name="job">The job object to be updated.</param>

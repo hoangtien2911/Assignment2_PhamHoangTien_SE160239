@@ -1,0 +1,65 @@
+﻿@page
+@model EmployeeManagementRazorPage.Pages.AdminPage.AddAccountPageModel
+@{
+}
+<div style="border-radius: 10px; background-color: #EFF2F7; padding: 0 0 0 0;">
+    <div style="display: flex; min-height: calc(100vh - 117px);">
+        <partial name="_LeftMenu" />
+        <!-- Main Section -->
+        <div style="flex: 1; padding: 20px 0 0 0;">
+            <div style="margin-top: 20px;">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Account.Username" class="control-label"></label>
+                        <input asp-for="Account.Username" class="form-control w-50" />
+                        <span asp-validation-for="Account.Username" class="text-danger"></span>
+                        <span class="text-danger">@ViewData["ErrorMessageUsername"]</span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Account.Password" class="control-label"></label>
+                        <input asp-for="Account.Password" class="form-control w-50" type="password"/>
+                        <span asp-validation-for="Account.Password" class="text-danger"></span>
+                        <span class="text-danger">@ViewData["ErrorMessagePassword"]</span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Account.Email" class="control-label"></label>
+                        <input asp-for="Account.Email" class="form-control w-50" type="email" />
+                        <span asp-validation-for="Account.Email" class="text-danger"></span>
+                        <span class="text-danger">@ViewData["ErrorMessageEmail"]</span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Account.FullName" class="control-label"></label>
+                        <input asp-for="Account.FullName" class="form-control w-50" />
+                        <span asp-validation-for="Account.FullName" class="text-danger"></span>
+                        <span class="text-danger">@ViewData["ErrorMessageFullname"]</span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Account.PhoneNumber" class="control-label"></label>
+                        <input asp-for="Account.PhoneNumber" class="form-control w-50" />
+                        <span asp-validation-for="Account.PhoneNumber" class="text-danger"></span>
+                        <span class="text-danger">@ViewData["ErrorMessagePhoneNumber"]</span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Account.Role" class="control-label"></label>
+                        <select asp-for="Account.Role" class="form-control w-50">
+                            <option value="User">User</option>
+                            <option value="Manager">Manager</option>
+                        </select>
+                        <span asp-validation-for="Account.Role" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <input type="submit" value="Add" class="addButton" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

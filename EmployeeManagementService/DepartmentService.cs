@@ -35,6 +35,16 @@ public class DepartmentService : IDepartmentService
         return departmentRepo.GetAll();
     }
 
+    /// <summary>
+    /// Retrieves department by id from the database.
+    /// </summary>
+    /// /// <param name="departmentId">The department id.</param>
+    /// <returns>A department.</returns>
+    public Department GetDepartmentById(int departmentId)
+    {
+        return departmentRepo.GetAll().First(d => d.DepartmentId.Equals(departmentId));
+    }
+
 
     /// <summary>
     /// Updates an existing department in the database.

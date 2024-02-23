@@ -1,0 +1,58 @@
+﻿@page
+@model EmployeeManagementRazorPage.Pages.AdminPage.JobHistoryPageModel
+@{
+}
+<div style="border-radius: 10px; background-color: #EFF2F7; padding: 0 0 0 0;">
+    <div style="display: flex; min-height: calc(100vh - 117px);">
+        <partial name="_LeftMenu" />
+        <!-- Main Section -->
+        <div style="flex: 1; padding: 20px 0 0 0;">
+            <div style="margin-top: 20px;">
+                <table class="dataGrid">
+                    <thead>
+                        <tr>
+                            <th>Start date</th>
+                            <th>End date</th>
+                            <th>Department</th>
+                            <th>Job Title</th>
+                            <th>Salary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.JobHistories)
+                        {
+                            <tr>
+                                <td>
+                                    @{
+                                        string startedDate = item.StartedDate.ToString("dd-MM-yyyy");
+                                    }
+                                    @startedDate
+                                </td>
+                                <td>
+                                    @{
+                                        string endedDate = item.EndedDate?.ToString("dd-MM-yyyy");
+                                    }
+                                    @endedDate
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Job.JobTitle)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Job.Salary)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <a asp-page="./AdminHomePage">
+                    <button class="addButton mt-4" style="margin-left: 0;">
+                        Back to accounts
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>    

@@ -1,0 +1,33 @@
+﻿@page
+@model EmployeeManagementRazorPage.Pages.AdminPage.AddUpdateDepartmentPageModel
+@{
+}
+<div style="border-radius: 10px; background-color: #EFF2F7; padding: 0 0 0 0;">
+    <div style="display: flex; min-height: calc(100vh - 117px);">
+        <partial name="_LeftMenu" />
+        <!-- Main Section -->
+        <div style="flex: 1; padding: 20px 0 0 0;">
+            <div style="margin-top: 20px;">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Department.DepartmentId" />
+                    <input type="hidden" asp-for="IsUpdate" />
+                    <div class="form-group">
+                        <label asp-for="Department.DepartmentName" class="control-label"></label>
+                        <input asp-for="Department.DepartmentName" class="form-control" />
+                        <span asp-validation-for="Department.DepartmentName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-3 mb-3">
+                        <input type="submit" value="Save" class="addButton" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -22,6 +22,13 @@ public interface IDepartmentService
     IEnumerable<Department> GetAll();
 
     /// <summary>
+    /// Retrieves department by id from the database.
+    /// </summary>
+    /// /// <param name="departmentId">The department id.</param>
+    /// <returns>A department.</returns>
+    Department GetDepartmentById(int departmentId);
+
+    /// <summary>
     /// Updates an existing department in the database.
     /// </summary>
     /// <param name="department">The department object to be updated.</param>
