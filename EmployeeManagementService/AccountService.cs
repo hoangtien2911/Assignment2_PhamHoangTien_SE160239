@@ -37,12 +37,27 @@ public class AccountService : IAccountService
     }
 
     /// <summary>
+    /// Count total account with role not equal admin and delete flag = 0 from the database.
+    /// </summary>
+    /// <returns>Total accounts.</returns>
+    public int CountTotalAccount()
+    {
+        return accountRepo.GetAll().Where(a => a.DeleteFlag.Equals(0) && !a.Role.Equals("Admin")).Count();
+    }
+
+    /// <summary>
     /// Retrieves all accounts include address with role not equal admin and delete flag = 0 from the database.
     /// </summary>
+    /// <param name="pageNum">The page number.</param>
+    /// <param name="pageSize">The page size.</param>
     /// <returns>An IEnumerable of all accounts.</returns>
-    public IEnumerable<Account> GetAllIncludeAddressWithRoleNotAdmin()
+    public IEnumerable<Account> GetAllIncludeAddressWithRoleNotAdminByPageNumPageSize(int pageNum, int pageSize)
     {
-        return accountRepo.GetAllInclude().Include(a => a.Address).Where(a => a.DeleteFlag.Equals(0) && !a.Role.Equals("Admin")).ToList();
+        return accountRepo.GetAllInclude().Include(a => a.Address)
+            .Where(a => a.DeleteFlag.Equals(0) && !a.Role.Equals("Admin"))
+            .Skip((pageNum - 1) * pageSize)
+            .Take(pageSize)
+            .ToList();
     }
 
     /// <summary>
@@ -99,20 +114,32 @@ public class AccountService : IAccountService
     /// Find all account by name include address
     /// </summary>
     /// <param name="name">The name to search for in account records.</param>
+    /// <param name="pageNum">The page number.</param>
+    /// <param name="pageSize">The page size.</param>
     /// <returns>An IEnumerable of all accounts.</returns>
-    public IEnumerable<Account> FindAccountIncludeAddressByFullname(string name)
+    public IEnumerable<Account> FindAccountIncludeAddressByFullnamePageNumPageSize(string name, int pageNum, int pageSize)
     {
-        return accountRepo.GetAllInclude().Include(a => a.Address).Where(a => a.FullName.Contains(name) && a.DeleteFlag.Equals(0) && !a.Role.Equals("Admin")).ToList();
+        return accountRepo.GetAllInclude().Include(a => a.Address)
+            .Where(a => a.FullName.Contains(name) && a.DeleteFlag.Equals(0) && !a.Role.Equals("Admin"))
+            .Skip((pageNum - 1) * pageSize)
+            .Take(pageSize)            
+            .ToList();
     }
 
     /// <summary>
     /// Find all account by email include address
     /// </summary>
     /// <param name="email">The email to search for in account records.</param>
+    /// <param name="pageNum">The page number.</param>
+    /// <param name="pageSize">The page size.</param>
     /// <returns>An IEnumerable of all accounts.</returns>
-    public IEnumerable<Account> FindAccountIncludeAddressByEmail(string email)
+    public IEnumerable<Account> FindAccountIncludeAddressByEmailPageNumPageSize(string email, int pageNum, int pageSize)
     {
-        return accountRepo.GetAllInclude().Include(a => a.Address).Where(a => a.Email.Contains(email) && a.DeleteFlag.Equals(0) && !a.Role.Equals("Admin")).ToList();
+        return accountRepo.GetAllInclude().Include(a => a.Address)
+            .Where(a => a.Email.Contains(email) && a.DeleteFlag.Equals(0) && !a.Role.Equals("Admin"))
+            .Skip((pageNum - 1) * pageSize)
+            .Take(pageSize)            
+            .ToList();
     }
 
     /// <summary>

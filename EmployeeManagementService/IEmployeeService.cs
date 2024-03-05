@@ -22,10 +22,18 @@ public interface IEmployeeService
     IEnumerable<Employee> GetAll();
 
     /// <summary>
+    /// Count total employees from the database.
+    /// </summary>
+    /// <returns>Total employees.</returns>
+    int CountTotalEmployee();
+
+    /// <summary>
     /// Retrieves all employee include account address department job and history from the database.
     /// </summary>
+    /// <param name="pageNum">The page number.</param>
+    /// <param name="pageSize">The page size.</param>
     /// <returns>An IEnumerable of all employee.</returns>
-    IEnumerable<Employee> GetAllIncludeAccountAddressDepartmentJobAndHistory();
+    IEnumerable<Employee> GetAllIncludeAccountAddressDepartmentJobAndHistory(int pageNum, int pageSize);
 
     /// <summary>
     /// Retrieves employee by username include account address department job and history from the database.
@@ -37,15 +45,19 @@ public interface IEmployeeService
     /// Retrieves all employee by email include account department job from the database.
     /// </summary>
     /// <param name="email">The email to search for in employee records.</param>
+    /// <param name="pageNum">The page number.</param>
+    /// <param name="pageSize">The page size.</param>
     /// <returns>An IEnumerable of all employee.</returns>
-    IEnumerable<Employee> GetAllByEmailIncludeAccountDepartmentJob(string email);
+    IEnumerable<Employee> GetAllByEmailIncludeAccountDepartmentJob(string email, int pageNum, int pageSize);
 
     /// <summary>
     /// Retrieves all employee by name include account department job from the database.
     /// </summary>
     /// <param name="name">The name to search for in account records.</param>
+    /// <param name="pageNum">The page number.</param>
+    /// <param name="pageSize">The page size.</param>
     /// <returns>An IEnumerable of all employee.</returns>
-    IEnumerable<Employee> GetAllByNameIncludeAccountDepartmentJob(string name);
+    IEnumerable<Employee> GetAllByNameIncludeAccountDepartmentJob(string name, int pageNum, int pageSize);
 
     /// <summary>
     /// Get employee by username from the database.

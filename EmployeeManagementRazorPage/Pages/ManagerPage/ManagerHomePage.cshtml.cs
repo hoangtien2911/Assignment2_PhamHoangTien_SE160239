@@ -9,6 +9,14 @@ namespace EmployeeManagementRazorPage.Pages.ManagerPage
     {
         private readonly IEmployeeService _employeeService;
 
+        private const int PageSize = 5;
+
+        [BindProperty]
+        public int TotalPage { get; set; } = 1;
+
+        [BindProperty]
+        public int PageNumber { get; set; } = 1;
+
         [BindProperty]
         public string CbSearch { get; set; } = default!;
 
@@ -23,26 +31,28 @@ namespace EmployeeManagementRazorPage.Pages.ManagerPage
             _employeeService = employeeService;
         }
 
-        public IActionResult OnGet(string cbSearch, string txtSearch)
+        public IActionResult OnGet(string cbSearch, string txtSearch, int pageNumber = 1)
         {
             if (HttpContext.Session.GetString("Role") != "Manager") return Forbid();
+            TotalPage = (int)Math.Ceiling(_employeeService.CountTotalEmployee() / (double)PageSize);
+            PageNumber = pageNumber;
             if (!string.IsNullOrEmpty(txtSearch))
-            {
+            {                
                 CbSearch = cbSearch;
                 TxtSearch = txtSearch;
                 if (cbSearch == "Name")
                 {
-                    Employees = _employeeService.GetAllByNameIncludeAccountDepartmentJob(txtSearch.Trim()).ToList();
+                    Employees = _employeeService.GetAllByNameIncludeAccountDepartmentJob(txtSearch.Trim(), pageNumber, PageSize).ToList();
                 }
                 else if (cbSearch == "Email")
                 {
-                    Employees = _employeeService.GetAllByEmailIncludeAccountDepartmentJob(txtSearch.Trim()).ToList();
+                    Employees = _employeeService.GetAllByEmailIncludeAccountDepartmentJob(txtSearch.Trim(), pageNumber, PageSize).ToList();
                 }
+                TotalPage = 1;
             } else
             {
-                Employees = _employeeService.GetAllIncludeAccountAddressDepartmentJobAndHistory().ToList();
-            }
-            
+                Employees = _employeeService.GetAllIncludeAccountAddressDepartmentJobAndHistory(pageNumber, PageSize).ToList();
+            }            
             return Page();
         }
     }

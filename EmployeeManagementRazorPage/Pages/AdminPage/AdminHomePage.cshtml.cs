@@ -9,6 +9,14 @@ namespace EmployeeManagementRazorPage.Pages.AdminPage
     {
         private readonly IAccountService _accountService;
 
+        private const int PageSize = 5;
+
+        [BindProperty]
+        public int TotalPage { get; set; } = 1;
+
+        [BindProperty]
+        public int PageNumber { get; set; } = 1;
+
         [BindProperty]
         public string CbSearch { get; set; } = default!;
 
@@ -23,27 +31,29 @@ namespace EmployeeManagementRazorPage.Pages.AdminPage
             _accountService = accountService;
         }
 
-        public IActionResult OnGet(string cbSearch, string txtSearch)
+        public IActionResult OnGet(string cbSearch, string txtSearch, int pageNumber = 1)
         {
             if (HttpContext.Session.GetString("Role") != "Admin") return Forbid();
+            TotalPage = (int)Math.Ceiling(_accountService.CountTotalAccount() / (double)PageSize);
+            PageNumber = pageNumber;
             if (!string.IsNullOrEmpty(txtSearch))
             {
                 CbSearch = cbSearch;
                 TxtSearch = txtSearch;
                 if (cbSearch == "Name")
                 {
-                    Accounts = _accountService.FindAccountIncludeAddressByFullname(TxtSearch).ToList();
+                    Accounts = _accountService.FindAccountIncludeAddressByFullnamePageNumPageSize(TxtSearch, pageNumber, PageSize).ToList();
                 }
                 else if (cbSearch == "Email")
                 {
-                    Accounts = _accountService.FindAccountIncludeAddressByEmail(TxtSearch).ToList();
+                    Accounts = _accountService.FindAccountIncludeAddressByEmailPageNumPageSize(TxtSearch, pageNumber, PageSize).ToList();
                 }
+                TotalPage = 1;
             }
             else
             {
-                Accounts = _accountService.GetAllIncludeAddressWithRoleNotAdmin().ToList();
+                Accounts = _accountService.GetAllIncludeAddressWithRoleNotAdminByPageNumPageSize(pageNumber, PageSize).ToList();
             }
-
             return Page();
         }
     }

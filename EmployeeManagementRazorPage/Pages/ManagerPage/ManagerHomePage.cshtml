@@ -85,6 +85,19 @@
                     </tbody>
                 </table>                                
             </div>
+            <div class="d-flex justify-content-center mt-3">
+                <div class="text-center me-3">
+                    @if (Model.Employees.Any())
+                    {
+                        for (int i = 1; i <= Model.TotalPage; i++)
+                        {
+                            <a asp-page="./ManagerHomePage" asp-route-pageNumber="@i" asp-route-cbSearch="@Model.CbSearch" asp-route-txtSearch="@Model.TxtSearch" class="btn-paging mt-3 mx-2 fs-6 py-2 px-3 @(i == Model.PageNumber ? "btn-paging-active" : "")" style="text-decoration:none;border-radius: 0; width: 40px; height: 40px;">
+                                @i
+                            </a>
+                        }
+                    }
+                </div>
+            </div>
         </div>
     </div>
 </div>    

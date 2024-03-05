@@ -22,10 +22,18 @@ public interface IAccountService
     IEnumerable<Account> GetAll();
 
     /// <summary>
+    /// Count total account with role not equal admin and delete flag = 0 from the database.
+    /// </summary>
+    /// <returns>Total accounts.</returns>
+    int CountTotalAccount();
+
+    /// <summary>
     /// Retrieves all accounts include address with role not equal admin and delete flag = 0 from the database.
     /// </summary>
+    /// <param name="pageNum">The page number.</param>
+    /// <param name="pageSize">The page size.</param>
     /// <returns>An IEnumerable of all accounts.</returns>
-    IEnumerable<Account> GetAllIncludeAddressWithRoleNotAdmin();
+    IEnumerable<Account> GetAllIncludeAddressWithRoleNotAdminByPageNumPageSize(int pageNum, int pageSize);
 
     /// <summary>
     /// Retrieves all accounts with not a employee and delete flag = 0 from the database.
@@ -59,15 +67,19 @@ public interface IAccountService
     /// Find all account by name include address
     /// </summary>
     /// <param name="name">The name to search for in account records.</param>
+    /// <param name="pageNum">The page number.</param>
+    /// <param name="pageSize">The page size.</param>
     /// <returns>An IEnumerable of all accounts.</returns>
-    IEnumerable<Account> FindAccountIncludeAddressByFullname(string name);
+    IEnumerable<Account> FindAccountIncludeAddressByFullnamePageNumPageSize(string name, int pageNum, int pageSize);
 
     /// <summary>
     /// Find all account by email include address
     /// </summary>
     /// <param name="email">The email to search for in account records.</param>
+    /// <param name="pageNum">The page number.</param>
+    /// <param name="pageSize">The page size.</param>
     /// <returns>An IEnumerable of all accounts.</returns>
-    IEnumerable<Account> FindAccountIncludeAddressByEmail(string email);
+    IEnumerable<Account> FindAccountIncludeAddressByEmailPageNumPageSize(string email, int pageNum, int pageSize);
 
     /// <summary>
     /// Updates an existing account in the database.

@@ -37,6 +37,15 @@ public class EmployeeService : IEmployeeService
     }
 
     /// <summary>
+    /// Count total employees from the database.
+    /// </summary>
+    /// <returns>Total employees.</returns>
+    public int CountTotalEmployee()
+    {
+        return employeeRepo.GetAll().Count();
+    }
+
+    /// <summary>
     /// Get employee by username from the database.
     /// </summary>
     /// <param name="username">The username of the account.</param>
@@ -49,10 +58,15 @@ public class EmployeeService : IEmployeeService
     /// <summary>
     /// Retrieves all employee include account address department job and history from the database.
     /// </summary>
+    /// <param name="pageNum">The page number.</param>
+    /// <param name="pageSize">The page size.</param>
     /// <returns>An IEnumerable of all employee.</returns>
-    public IEnumerable<Employee> GetAllIncludeAccountAddressDepartmentJobAndHistory()
+    public IEnumerable<Employee> GetAllIncludeAccountAddressDepartmentJobAndHistory(int pageNum, int pageSize)
     {
-        return employeeRepo.GetAllInclude().Include(e => e.Account).Include(e => e.Account.Address).Include(e => e.Department).Include(e => e.Job).Include(e => e.JobHistories).ToList();
+        return employeeRepo.GetAllInclude().Include(e => e.Account).Include(e => e.Account.Address).Include(e => e.Department).Include(e => e.Job).Include(e => e.JobHistories)
+            .Skip((pageNum - 1) * pageSize)
+            .Take(pageSize)
+            .ToList();
     }
 
     /// <summary>
@@ -68,20 +82,32 @@ public class EmployeeService : IEmployeeService
     /// Retrieves all employee by email include account department job from the database.
     /// </summary>
     /// <param name="email">The email to search for in employee records.</param>
+    /// <param name="pageNum">The page number.</param>
+    /// <param name="pageSize">The page size.</param>
     /// <returns>An IEnumerable of all employee.</returns>
-    public IEnumerable<Employee> GetAllByEmailIncludeAccountDepartmentJob(string email)
+    public IEnumerable<Employee> GetAllByEmailIncludeAccountDepartmentJob(string email, int pageNum, int pageSize)
     {
-        return employeeRepo.GetAllInclude().Include(e => e.Account).Include(e => e.Department).Include(e => e.Job).Where(e => e.Account.Email.Contains(email)).ToList();
+        return employeeRepo.GetAllInclude().Include(e => e.Account).Include(e => e.Department).Include(e => e.Job)            
+            .Where(e => e.Account.Email.Contains(email))
+            .Skip((pageNum - 1) * pageSize)
+            .Take(pageSize)
+            .ToList();
     }
 
     /// <summary>
     /// Retrieves all employee by name include account department job from the database.
     /// </summary>
     /// <param name="name">The name to search for in account records.</param>
+    /// <param name="pageNum">The page number.</param>
+    /// <param name="pageSize">The page size.</param>
     /// <returns>An IEnumerable of all employee.</returns>
-    public IEnumerable<Employee> GetAllByNameIncludeAccountDepartmentJob(string name)
+    public IEnumerable<Employee> GetAllByNameIncludeAccountDepartmentJob(string name, int pageNum, int pageSize)
     {
-        return employeeRepo.GetAllInclude().Include(e => e.Account).Include(e => e.Department).Include(e => e.Job).Where(e => e.Account.FullName.Contains(name)).ToList();
+        return employeeRepo.GetAllInclude().Include(e => e.Account).Include(e => e.Department).Include(e => e.Job)
+            .Where(e => e.Account.FullName.Contains(name))
+            .Skip((pageNum - 1) * pageSize)
+            .Take(pageSize)
+            .ToList();
     }
 
     /// <summary>

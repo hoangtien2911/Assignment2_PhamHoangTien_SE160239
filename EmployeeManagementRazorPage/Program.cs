@@ -1,5 +1,7 @@
+using EmployeeManagementBO.Models;
 using EmployeeManagementService;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +13,17 @@ builder.Services.AddScoped<IJobService, JobService>();
 builder.Services.AddScoped<IJobHistoryService, JobHistoryService>();
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+// Add logging configuration
+builder.Logging.AddConsole(); // Log to console
+builder.Logging.AddDebug(); // Log to debug output
+
+// Configure logging to log SQL queries
+builder.Services.AddDbContext<EmployeesManagementContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("EmployeeManagement"));
+    options.LogTo(Console.WriteLine); // Log SQL queries to console
+});
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
 {
