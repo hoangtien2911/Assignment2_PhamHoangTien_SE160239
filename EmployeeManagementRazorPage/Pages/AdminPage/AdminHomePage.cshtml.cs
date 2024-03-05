@@ -48,7 +48,6 @@ namespace EmployeeManagementRazorPage.Pages.AdminPage
                 {
                     Accounts = _accountService.FindAccountIncludeAddressByEmailPageNumPageSize(TxtSearch, pageNumber, PageSize).ToList();
                 }
-                TotalPage = 1;
             }
             else
             {

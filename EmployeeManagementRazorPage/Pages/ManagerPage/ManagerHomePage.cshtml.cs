@@ -47,8 +47,7 @@ namespace EmployeeManagementRazorPage.Pages.ManagerPage
                 else if (cbSearch == "Email")
                 {
                     Employees = _employeeService.GetAllByEmailIncludeAccountDepartmentJob(txtSearch.Trim(), pageNumber, PageSize).ToList();
-                }
-                TotalPage = 1;
+                }                
             } else
             {
                 Employees = _employeeService.GetAllIncludeAccountAddressDepartmentJobAndHistory(pageNumber, PageSize).ToList();
