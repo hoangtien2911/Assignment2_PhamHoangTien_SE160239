@@ -147,81 +147,60 @@ BEGIN
 END;
 GO
 
-INSERT INTO ACCOUNT (
-    USERNAME,
-    [PASSWORD],
-    EMAIL,
-    FULL_NAME,
-    PHONE_NUMBER,
-    [ROLE]
-) VALUES (
-    'tienph',
-    '12345678',
-    'tienph@gmail.com',
-    'Pham Hoang Tien',
-    '123456789',
-    'User'
-);
+INSERT INTO ADDRESS (STREET,PROVINCE,CITY,WARD,UPDATED_DATE) VALUES
+	 (N'D??ng Nguyen Luong Bang',N'tinh Dak Lak',N'Buon Ma Thuot',N'Hoa Thang','2024-03-06 00:49:44.060'),
+	 (N'Nguyen Luong Bang',N'Dak Lak',N'BMT',N'Hoa Thang','2024-03-06 00:50:34.470'),
+	 (N'Nguyen Luong Bang',N'Dak Lak',N'TP Buon Ma Thuot',N'Xa Hoa Phu','2024-02-23 23:38:23.723'),
+	 (N'Nguyen Luong Bang',N'Dak Lak',N'TP Buon Ma Thuot',N'Hoa Thang','2024-02-23 23:38:54.670'),
+	 (N'Nguyen Luong Bang',N'',N'',N'','2024-03-05 21:51:09.653'),
+	 (N'Nguyen Luong Bang',N'tinh Dak Lak',N'TP Buon Ma Thuot',N'Hoa Thang',NULL),
+	 (N'Nguyen Luong Bang',N'Dak Lak',N'TP Buon Ma Thuot',N'Hoa Thang',NULL);
 
-INSERT INTO ACCOUNT (
-    USERNAME,
-    [PASSWORD],
-    EMAIL,
-    FULL_NAME,
-    PHONE_NUMBER,
-    [ROLE]
-) VALUES (
-    'tupht',
-    '12345678',
-    'tupht@gmail.com',
-    'Pham Hoang Thanh Tu',
-    '123456789',
-    'User'
-);
+INSERT INTO ACCOUNT (USERNAME,PASSWORD,EMAIL,FULL_NAME,PHONE_NUMBER,[ROLE],CREATED_DATE,UPDATED_DATE,DELETE_FLAG,ADDRESS_ID) VALUES
+	 (N'admin',N'123',N'admin@gmail.com',N'Pham Hoang Tien',N'123456789',N'Admin','2024-02-20 00:36:43.280','2024-03-05 21:09:12.423',0,NULL),
+	 (N'ewrrw',N'1234567A@',N'handnn@gmail.com',N'Do Nguyen Ngoc Han',N'1234',N'User','2024-02-21 23:12:02.957','2024-02-24 01:00:38.480',1,3),
+	 (N'manager',N'123',N'manager@gmail.com',N'Pham Hoang Tien',N'0868363802',N'Manager','2024-02-20 00:36:43.280','2024-03-06 00:49:44.077',0,1),
+	 (N'thilien',N'12345678A@',N'test@gmail.com',N'Thi Lien',N'123455667',N'Manager','2024-02-24 00:28:02.077','2024-02-24 01:01:28.870',1,NULL),
+	 (N'tienph',N'123',N'tienph@gmail.com',N'Pham Hoang Tien',N'234234',N'User','2024-02-20 00:36:43.277','2024-03-06 00:50:34.480',0,2),
+	 (N'tienph1',N'1234567A@',N'tienph1@gmail.com',N'Tien',N'1234',N'User','2024-03-06 00:36:03.743','2024-03-06 00:36:03.773',0,NULL),
+	 (N'tienph11',N'12345678A@',N'test@gmail.com',N'test',N'12345678',N'User','2024-03-06 00:44:42.593','2024-03-06 00:45:56.627',1,6),
+	 (N'tupht',N'12345678',N'tupht@gmail.com',N'Pham Hoang Thanh Tu',N'123456789',N'User','2024-02-20 00:36:43.280','2024-02-23 23:38:54.673',0,4),
+	 (N'vanphuot',N'12345678@A',N'vanphuot@gmail.com',N'vanphuot',N'123452344',N'User','2024-03-06 00:03:51.827','2024-03-06 00:48:46.043',0,7),
+	 (N'vanthong',N'123456789A@',N'vanthong@gmail.com',N'vanthong',N'12345678',N'User','2024-03-06 00:04:32.327','2024-03-06 00:04:32.330',0,NULL);
+INSERT INTO ACCOUNT (USERNAME,PASSWORD,EMAIL,FULL_NAME,PHONE_NUMBER,[ROLE],CREATED_DATE,UPDATED_DATE,DELETE_FLAG,ADDRESS_ID) VALUES
+	 (N'vanviet',N'123456A@',N'vanviet@gmail.com',N'Van Viet',N'12345',N'User','2024-02-24 00:27:26.540','2024-03-05 21:51:09.660',0,5);
+	 
+INSERT INTO DEPARTMENT (DEPARTMENT_NAME) VALUES
+	 (N'Human Resources'),
+	 (N'Sales'),
+	 (N'Marketing'),
+	 (N'Software Engineering'),
+	 (N'Update');
+	
+INSERT INTO JOB (JOB_TITLE,SALARY,UPDATED_DATE) VALUES
+	 (N'Developer',1700,'2024-03-06 00:46:32.763'),
+	 (N'Data Analyst',1200,NULL),
+	 (N'Project Manager',2000,NULL),
+	 (N'Sales Representative',1000,NULL),
+	 (N'Marketing Specialist',1100,NULL);
+		
+INSERT INTO EMPLOYEE (HIRED_DATE,USERNAME,DEPARTMENT_ID,JOB_ID) VALUES
+	 ('2024-02-14',N'tienph',4,1),
+	 ('2024-02-01',N'ewrrw',2,5),
+	 ('2023-11-29',N'tupht',2,5),
+	 ('2024-01-03',N'vanviet',4,3),
+	 ('2024-02-09',N'tienph1',4,1),
+	 ('2024-02-01',N'vanphuot',4,3);
 
 
-INSERT INTO ACCOUNT (
-    USERNAME,
-    [PASSWORD],
-    EMAIL,
-    FULL_NAME,
-    PHONE_NUMBER,
-    [ROLE]
-) VALUES (
-    'manager',
-    '12345678',
-    'manager@gmail.com',
-    'Pham Hoang Tien',
-    '123456789',
-    'Manager'
-);
+INSERT INTO JOB_HISTORY (STARTED_DATE,ENDED_DATE,JOB_ID,DEPARTMENT_ID,EMPLOYEE_ID) VALUES
+	 ('2024-02-14','2024-02-22',3,4,1),
+	 ('2024-02-01','2024-02-22',5,1,2),
+	 ('2023-11-29',NULL,5,2,3),
+	 ('2024-02-22',NULL,1,4,1),
+	 ('2024-02-22',NULL,5,2,2),
+	 ('2024-01-03',NULL,3,4,4),
+	 ('2024-02-09',NULL,1,4,5),
+	 ('2024-02-01','2024-03-06',1,4,6),
+	 ('2024-03-06',NULL,3,4,6);
 
-INSERT INTO ACCOUNT (
-    USERNAME,
-    [PASSWORD],
-    EMAIL,
-    FULL_NAME,
-    PHONE_NUMBER,
-    [ROLE]
-) VALUES (
-    'admin',
-    '12345678',
-    'admin@gmail.com',
-    'Pham Hoang Tien',
-    '123456789',
-    'Admin'
-);
-
-INSERT INTO JOB (JOB_TITLE, SALARY)
-VALUES 
-    ('Developer', 1500),
-    ('Data Analyst', 1200),
-    ('Project Manager', 2000),
-	('Sales Representative', 1000),
-	('Marketing Specialist', 1100);	
-INSERT INTO DEPARTMENT (DEPARTMENT_NAME)
-VALUES 
-    ('Human Resources'),
-    ('Sales'),
-    ('Marketing'),
-	('Software Engineer');
