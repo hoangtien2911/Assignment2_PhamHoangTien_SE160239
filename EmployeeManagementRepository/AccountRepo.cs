@@ -1,5 +1,6 @@
 ﻿using EmployeeManagementBO.Models;
 using EmployeeManagementDAO;
+using EmployeeManagementRepository.IRepository;
 using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeManagementRepository;

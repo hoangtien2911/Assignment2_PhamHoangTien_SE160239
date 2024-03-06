@@ -1,6 +1,6 @@
 ﻿using EmployeeManagementBO.Models;
 
-namespace EmployeeManagementService;
+namespace EmployeeManagementService.IService;
 
 /// <summary>
 /// Interface for managing employee in the service layer.

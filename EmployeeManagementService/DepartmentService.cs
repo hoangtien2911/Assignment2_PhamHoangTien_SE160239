@@ -1,5 +1,7 @@
 ﻿using EmployeeManagementBO.Models;
 using EmployeeManagementRepository;
+using EmployeeManagementRepository.IRepository;
+using EmployeeManagementService.IService;
 
 namespace EmployeeManagementService;
 

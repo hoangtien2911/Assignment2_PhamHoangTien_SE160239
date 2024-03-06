@@ -1,12 +1,12 @@
 ﻿using EmployeeManagementBO.Models;
 
-namespace EmployeeManagementRepository;
+namespace EmployeeManagementService.IService;
 
 /// <summary>
-/// Interface for managing department in the repository.
+/// Interface for managing department in the service layer.
 /// </summary>
 /// <author>TienPH</author>
-public interface IDepartmentRepo
+public interface IDepartmentService
 {
     /// <summary>
     /// Creates a new department in the database.
@@ -18,14 +18,15 @@ public interface IDepartmentRepo
     /// <summary>
     /// Retrieves all department from the database.
     /// </summary>
-    /// <returns>An IQueryable of all department.</returns>
+    /// <returns>An IEnumerable of all department.</returns>
     IEnumerable<Department> GetAll();
 
     /// <summary>
-    /// Retrieves all department with include from the database.
+    /// Retrieves department by id from the database.
     /// </summary>
-    /// <returns>An IQueryable of all department.</returns>
-    IQueryable<Department> GetAllInclude();
+    /// /// <param name="departmentId">The department id.</param>
+    /// <returns>A department.</returns>
+    Department GetDepartmentById(int departmentId);
 
     /// <summary>
     /// Updates an existing department in the database.
@@ -40,4 +41,11 @@ public interface IDepartmentRepo
     /// <param name="department">The department object to be deleted.</param>
     /// <returns>True if the department is successfully deleted, otherwise false.</returns>
     bool Delete(Department department);
+
+    /// <summary>
+    /// Check existing department by department id in the database.
+    /// </summary>
+    /// <param name="departmentId">The department id to be checked.</param>
+    /// <returns>True if the department id existed, otherwise false.</returns>
+    bool IsExistingDepartment(int departmentId);
 }

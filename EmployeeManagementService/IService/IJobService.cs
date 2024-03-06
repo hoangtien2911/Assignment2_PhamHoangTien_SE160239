@@ -1,12 +1,12 @@
 ﻿using EmployeeManagementBO.Models;
 
-namespace EmployeeManagementRepository;
+namespace EmployeeManagementService.IService;
 
 /// <summary>
-/// Interface for managing job in the repository.
+/// Interface for managing job in the service layer.
 /// </summary>
 /// <author>TienPH</author>
-public interface IJobRepo
+public interface IJobService
 {
     /// <summary>
     /// Creates a new job in the database.
@@ -22,10 +22,12 @@ public interface IJobRepo
     IEnumerable<Job> GetAll();
 
     /// <summary>
-    /// Retrieves all job with include from the database.
+    /// Retrieves job by id from the database.
     /// </summary>
-    /// <returns>An IQueryable of all job.</returns>
-    IQueryable<Job> GetAllInclude();
+    /// /// <param name="jobId">The job id.</param>
+    /// <returns>A job.</returns>
+    Job GetJobById(int jobId);
+
 
     /// <summary>
     /// Updates an existing job in the database.
@@ -40,4 +42,11 @@ public interface IJobRepo
     /// <param name="job">The job object to be deleted.</param>
     /// <returns>True if the job is successfully deleted, otherwise false.</returns>
     bool Delete(Job job);
+
+    /// <summary>
+    /// Check existing job by job id in the database.
+    /// </summary>
+    /// <param name="jobId">The job id to be checked.</param>
+    /// <returns>True if the job id existed, otherwise false.</returns>
+    bool IsExistingJob(int jobId);
 }

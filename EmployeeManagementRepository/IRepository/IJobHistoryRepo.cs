@@ -1,12 +1,15 @@
-﻿using EmployeeManagementBO.Models;
+﻿
 
-namespace EmployeeManagementService;
+using EmployeeManagementBO.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace EmployeeManagementRepository.IRepository;
 
 /// <summary>
-/// Interface for managing job history in the service layer.
+/// Interface for managing job history in the repository.
 /// </summary>
 /// <author>TienPH</author>
-public interface IJobHistoryService
+public interface IJobHistoryRepo
 {
     /// <summary>
     /// Creates a new jobHistory in the database.
@@ -22,11 +25,10 @@ public interface IJobHistoryService
     IEnumerable<JobHistory> GetAll();
 
     /// <summary>
-    /// Retrieves all jobHistory include Job and depa from the database.
+    /// Retrieves all jobHistory with include from the database.
     /// </summary>
-    /// <param name="employeeId">The employee id to get job histories.</param>
-    /// <returns>An IEnumerable of all jobHistory.</returns>
-    IEnumerable<JobHistory> GetAllJobHistoryIncludeJobAndDepartmentByEmployeeId(int employeeId);
+    /// <returns>An IQueryable of all jobHistory.</returns>
+    IQueryable<JobHistory> GetAllInclude();
 
     /// <summary>
     /// Updates an existing jobHistory in the database.

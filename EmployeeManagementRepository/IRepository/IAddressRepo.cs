@@ -1,12 +1,12 @@
 ﻿using EmployeeManagementBO.Models;
 
-namespace EmployeeManagementService;
+namespace EmployeeManagementRepository.IRepository;
 
 /// <summary>
-/// Interface for managing address in the service layer.
+/// Interface for managing address in the repository.
 /// </summary>
 /// <author>TienPH</author>
-public interface IAddressService
+public interface IAddressRepo
 {
     /// <summary>
     /// Creates a new address in the database.
@@ -20,6 +20,12 @@ public interface IAddressService
     /// </summary>
     /// <returns>An IEnumerable of all address.</returns>
     IEnumerable<Address> GetAll();
+
+    /// <summary>
+    /// Retrieves all address with include from the database.
+    /// </summary>
+    /// <returns>An IQueryable of all address.</returns>
+    IQueryable<Address> GetAllInclude();
 
     /// <summary>
     /// Updates an existing address in the database.

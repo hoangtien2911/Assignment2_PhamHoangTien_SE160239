@@ -2,6 +2,7 @@
 
 using EmployeeManagementBO.Models;
 using EmployeeManagementDAO;
+using EmployeeManagementRepository.IRepository;
 
 namespace EmployeeManagementRepository;
 

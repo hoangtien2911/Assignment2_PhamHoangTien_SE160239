@@ -1,6 +1,6 @@
 ﻿using EmployeeManagementBO.Models;
 
-namespace EmployeeManagementService;
+namespace EmployeeManagementService.IService;
 
 /// <summary>
 /// Interface for managing account in the service layer.
@@ -93,5 +93,5 @@ public interface IAccountService
     /// </summary>
     /// <param name="email">The email to be checked.</param>
     /// <returns>True if the email existed, otherwise false.</returns>
-    bool IsExistedEmail(String email);
+    bool IsExistedEmail(string email);
 }

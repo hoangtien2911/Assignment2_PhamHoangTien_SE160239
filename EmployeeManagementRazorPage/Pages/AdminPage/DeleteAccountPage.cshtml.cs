@@ -1,4 +1,4 @@
-using EmployeeManagementService;
+using EmployeeManagementService.IService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 

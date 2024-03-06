@@ -1,6 +1,6 @@
 ﻿using EmployeeManagementBO.Models;
 
-namespace EmployeeManagementRepository;
+namespace EmployeeManagementRepository.IRepository;
 
 /// <summary>
 /// Interface for managing account in the repository.

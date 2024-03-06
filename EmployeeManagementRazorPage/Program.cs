@@ -1,5 +1,6 @@
 using EmployeeManagementBO.Models;
 using EmployeeManagementService;
+using EmployeeManagementService.IService;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
